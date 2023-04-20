@@ -49,16 +49,7 @@ struct ScannerView: View {
                             }
                             .zIndex(1)
                       }
-                } else {
-                      Button {
-                            // button functions
-                      } label: {
-                            Image(systemName: "xmark")
-                                  .font(.title3)
-                                  .foregroundColor(Color("DarkBlue"))
-                      }
-                      .frame(maxWidth: .infinity, alignment: .leading)
-                      
+                } else {                      
                       Text("Please place the QR code inside the area")
                             .font(.title3)
                             .foregroundColor(.black.opacity(0.8))
