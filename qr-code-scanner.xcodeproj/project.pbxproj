@@ -7,18 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5ABF2B7629F1AD4E00B5F0BE /* qr_code_scannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABF2B7529F1AD4E00B5F0BE /* qr_code_scannerApp.swift */; };
+		5ABF2B7629F1AD4E00B5F0BE /* QRCodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABF2B7529F1AD4E00B5F0BE /* QRCodeScanner.swift */; };
 		5ABF2B7829F1AD4E00B5F0BE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABF2B7729F1AD4E00B5F0BE /* ContentView.swift */; };
 		5ABF2B7A29F1AD5000B5F0BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5ABF2B7929F1AD5000B5F0BE /* Assets.xcassets */; };
 		5ABF2B7D29F1AD5000B5F0BE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5ABF2B7C29F1AD5000B5F0BE /* Preview Assets.xcassets */; };
+		5ABF2B8729F1AE8700B5F0BE /* CameraPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABF2B8629F1AE8700B5F0BE /* CameraPermission.swift */; };
+		5ABF2B8929F1AEF600B5F0BE /* ScannerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABF2B8829F1AEF600B5F0BE /* ScannerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5ABF2B7229F1AD4E00B5F0BE /* qr-code-scanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "qr-code-scanner.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5ABF2B7529F1AD4E00B5F0BE /* qr_code_scannerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = qr_code_scannerApp.swift; sourceTree = "<group>"; };
+		5ABF2B7529F1AD4E00B5F0BE /* QRCodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanner.swift; sourceTree = "<group>"; };
 		5ABF2B7729F1AD4E00B5F0BE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5ABF2B7929F1AD5000B5F0BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5ABF2B7C29F1AD5000B5F0BE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5ABF2B8629F1AE8700B5F0BE /* CameraPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPermission.swift; sourceTree = "<group>"; };
+		5ABF2B8829F1AEF600B5F0BE /* ScannerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +55,11 @@
 		5ABF2B7429F1AD4E00B5F0BE /* qr-code-scanner */ = {
 			isa = PBXGroup;
 			children = (
-				5ABF2B7529F1AD4E00B5F0BE /* qr_code_scannerApp.swift */,
+				5ABF2B7529F1AD4E00B5F0BE /* QRCodeScanner.swift */,
 				5ABF2B7729F1AD4E00B5F0BE /* ContentView.swift */,
+				5ABF2B8429F1AE1E00B5F0BE /* Models */,
+				5ABF2B8329F1AE0E00B5F0BE /* Views */,
+				5ABF2B8529F1AE3E00B5F0BE /* Helpers */,
 				5ABF2B7929F1AD5000B5F0BE /* Assets.xcassets */,
 				5ABF2B7B29F1AD5000B5F0BE /* Preview Content */,
 			);
@@ -65,6 +72,29 @@
 				5ABF2B7C29F1AD5000B5F0BE /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5ABF2B8329F1AE0E00B5F0BE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5ABF2B8429F1AE1E00B5F0BE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5ABF2B8629F1AE8700B5F0BE /* CameraPermission.swift */,
+				5ABF2B8829F1AEF600B5F0BE /* ScannerDelegate.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5ABF2B8529F1AE3E00B5F0BE /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +168,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5ABF2B7829F1AD4E00B5F0BE /* ContentView.swift in Sources */,
-				5ABF2B7629F1AD4E00B5F0BE /* qr_code_scannerApp.swift in Sources */,
+				5ABF2B8929F1AEF600B5F0BE /* ScannerDelegate.swift in Sources */,
+				5ABF2B8729F1AE8700B5F0BE /* CameraPermission.swift in Sources */,
+				5ABF2B7629F1AD4E00B5F0BE /* QRCodeScanner.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

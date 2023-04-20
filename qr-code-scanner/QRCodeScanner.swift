@@ -1,5 +1,5 @@
 //
-//  qr_code_scannerApp.swift
+//  QRCodeScanner.swift
 //  qr-code-scanner
 //
 //  Created by Pham on 4/20/23.
@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct qr_code_scannerApp: App {
+struct QRCodeScanner: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
