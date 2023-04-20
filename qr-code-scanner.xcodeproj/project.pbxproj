@@ -16,6 +16,7 @@
 		5ABF2B8B29F1B08500B5F0BE /* ExtensionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABF2B8A29F1B08500B5F0BE /* ExtensionsView.swift */; };
 		5ABF2B8D29F1B4D900B5F0BE /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABF2B8C29F1B4D900B5F0BE /* CameraView.swift */; };
 		5ABF2B8F29F1B67900B5F0BE /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABF2B8E29F1B67900B5F0BE /* ScannerView.swift */; };
+		5ABF2B9129F1D1D700B5F0BE /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABF2B9029F1D1D700B5F0BE /* WebView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		5ABF2B8A29F1B08500B5F0BE /* ExtensionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsView.swift; sourceTree = "<group>"; };
 		5ABF2B8C29F1B4D900B5F0BE /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		5ABF2B8E29F1B67900B5F0BE /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
+		5ABF2B9029F1D1D700B5F0BE /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 			children = (
 				5ABF2B8C29F1B4D900B5F0BE /* CameraView.swift */,
 				5ABF2B8E29F1B67900B5F0BE /* ScannerView.swift */,
+				5ABF2B9029F1D1D700B5F0BE /* WebView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5ABF2B7829F1AD4E00B5F0BE /* ContentView.swift in Sources */,
+				5ABF2B9129F1D1D700B5F0BE /* WebView.swift in Sources */,
 				5ABF2B8929F1AEF600B5F0BE /* ScannerDelegate.swift in Sources */,
 				5ABF2B8729F1AE8700B5F0BE /* CameraPermission.swift in Sources */,
 				5ABF2B8D29F1B4D900B5F0BE /* CameraView.swift in Sources */,
