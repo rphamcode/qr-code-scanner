@@ -16,7 +16,6 @@ class ScannerDelegate: NSObject, ObservableObject, AVCaptureMetadataOutputObject
                   guard let readableObject = metaObject as? AVMetadataMachineReadableCodeObject else { return }
                   guard let Code = readableObject.stringValue else { return }
                   
-                  print(Code)
                   scannedCode = Code
                   
                   AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))

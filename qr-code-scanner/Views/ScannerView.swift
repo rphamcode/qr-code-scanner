@@ -165,12 +165,12 @@ struct ScannerView: View {
                                     setupCamera()
                               } else {
                                     cameraPermission = .denied
-                                    presentError("Please Provide Access to Camera for scanning codes")
+                                    presentError("Please Permit Access to Camera for scanning QR code")
                               }
                               
                         case .denied, .restricted:
                               cameraPermission = .denied
-                              presentError("Please Provide Access to Camera for scanning codes")
+                              presentError("Please Permit Access to Camera for scanning QR code")
                               
                         default: break
                   }
@@ -180,13 +180,13 @@ struct ScannerView: View {
       func setupCamera() {
             do {
                   guard let device = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: .video, position: .back).devices.first else {
-                        presentError("UNKNOWN DEVICE ERROR")
+                        presentError("UNKNOWN DEVICE")
                         return
                   }
                   
                   let input = try AVCaptureDeviceInput(device: device)
                   guard session.canAddInput(input), session.canAddOutput(qrOutput) else {
-                        presentError("UNKNOWN INPUT/OUTPUT ERROR")
+                        presentError("UNKNOWN I/O ERROR")
                         return
                   }
                   
