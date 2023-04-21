@@ -32,7 +32,6 @@ struct ScannerView: View {
           VStack(spacing: 8) {
                 Text("Please place the QR code inside the area")
                       .font(.title3)
-                      .foregroundColor(.black.opacity(0.8))
                       .padding(.top, 20)
                 
                 Text("Scanning will start automatically")
