@@ -30,87 +30,66 @@ struct ScannerView: View {
       
     var body: some View {
           VStack(spacing: 8) {
-                if showWebView {
+                Text("Please place the QR code inside the area")
+                      .font(.title3)
+                      .foregroundColor(.black.opacity(0.8))
+                      .padding(.top, 20)
+                
+                Text("Scanning will start automatically")
+                      .font(.callout)
+                      .foregroundColor(.gray)
+                
+                Spacer(minLength: 0)
+                
+                GeometryReader {
+                      let size = $0.size
+                      let squareWidth = min(size.width, 300)
+                      
                       ZStack {
-                            NavigationView {
-                                  WebView(url: URL(string: scannedCode)!)
-                                        .edgesIgnoringSafeArea(.all)
-                                        .navigationBarTitle(scannedCode)
-                                        .navigationBarTitleDisplayMode(.inline)
-                                        .toolbar {
-                                              ToolbarItem(placement: .navigationBarTrailing) {
-                                                    Button(action: {
-                                                          showWebView = false
-                                                    }) {
-                                                          Text("Close")
-                                                    }
-                                              }
+                            CameraView(frameSize: CGSize(width: squareWidth, height: squareWidth), orientation: $orientation, session: $session)
+                                  .cornerRadius(5)
+                                  .scaleEffect(0.97)
+                                  .onRotate {
+                                        if session.isRunning {
+                                              orientation = $0
                                         }
-                            }
-                            .zIndex(1)
-                      }
-                } else {                      
-                      Text("Please place the QR code inside the area")
-                            .font(.title3)
-                            .foregroundColor(.black.opacity(0.8))
-                            .padding(.top, 20)
-                      
-                      Text("Scanning will start automatically")
-                            .font(.callout)
-                            .foregroundColor(.gray)
-                      
-                      Spacer(minLength: 0)
-                      
-                      GeometryReader {
-                            let size = $0.size
-                            let squareWidth = min(size.width, 300)
-                            
-                            ZStack {
-                                  CameraView(frameSize: CGSize(width: squareWidth, height: squareWidth), orientation: $orientation, session: $session)
-                                        .cornerRadius(5)
-                                        .scaleEffect(0.97)
-                                        .onRotate {
-                                              if session.isRunning {
-                                                    orientation = $0
-                                              }
-                                        }
-                                  
-                                  ForEach(0...4, id: \.self) { index in
-                                        let rotation = Double(index) * 90
-                                        
-                                        RoundedRectangle(cornerRadius: 2, style: .circular)
-                                              .trim(from: 0.61, to: 0.64)
-                                              .stroke(Color("DarkBlue"), style: StrokeStyle(lineWidth: 5, lineCap: .round, lineJoin: .round))
-                                              .rotationEffect(.init(degrees: rotation))
                                   }
+                            
+                            ForEach(0...4, id: \.self) { index in
+                                  let rotation = Double(index) * 90
+                                  
+                                  RoundedRectangle(cornerRadius: 2, style: .circular)
+                                        .trim(from: 0.61, to: 0.64)
+                                        .stroke(Color("DarkBlue"), style: StrokeStyle(lineWidth: 5, lineCap: .round, lineJoin: .round))
+                                        .rotationEffect(.init(degrees: rotation))
                             }
-                            .frame(width: squareWidth, height: squareWidth)
-                            .overlay(alignment: .top) {
-                                  Rectangle()
-                                        .fill(Color("DarkBlue"))
-                                        .frame(height: 2.5)
-                                        .shadow(color: .black.opacity(0.8), radius: 8, x: 0, y: isScanning ? 15 : -15)
-                                        .offset(y: isScanning ? squareWidth : 0)
-                            }
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
                       }
-                      .padding(.horizontal, 45)
-                      
-                      Spacer(minLength: 15)
-                      
-                      Button {
-                            if !session.isRunning && cameraPermission == .approved {
-                                  reactivateCamera()
-                                  activateScannerAnimation()
-                            }
-                      } label: {
-                            Image(systemName: "qrcode.viewfinder")
-                                  .font(.largeTitle)
-                                  .foregroundColor(.gray)
+                      .frame(width: squareWidth, height: squareWidth)
+                      .overlay(alignment: .top) {
+                            Rectangle()
+                                  .fill(Color("DarkBlue"))
+                                  .frame(height: 2.5)
+                                  .shadow(color: .black.opacity(0.8), radius: 8, x: 0, y: isScanning ? 15 : -15)
+                                  .offset(y: isScanning ? squareWidth : 0)
                       }
-                      
-                      Spacer(minLength: 45)
+                      .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
+                .padding(.horizontal, 45)
+                
+                Spacer(minLength: 15)
+                
+                Button {
+                      if !session.isRunning && cameraPermission == .approved {
+                            reactivateCamera()
+                            activateScannerAnimation()
+                      }
+                } label: {
+                      Image(systemName: "qrcode.viewfinder")
+                            .font(.largeTitle)
+                            .foregroundColor(.gray)
+                }
+                
+                Spacer(minLength: 45)
           }
           .padding(15)
           .onAppear(perform: checkCameraPermission)
@@ -136,7 +115,11 @@ struct ScannerView: View {
                       session.stopRunning()
                       deActivateScannerAnimation()
                       qrDelegate.scannedCode = nil
-                      openScannedURL()
+                      presentError(scannedCode)
+                      
+                      if let url = URL(string: scannedCode) {
+                            openURL(url)
+                      }
                 }
           }
           .onChange(of: session.isRunning) { newValue in
